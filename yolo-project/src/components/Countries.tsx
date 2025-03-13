@@ -1,5 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { GET_COUNTRIES } from "./query";
+import { GET_COUNTRIES } from "./../Queries/Countries.query";
+
+import './Countries.module.scss';
 
 interface Country {
   code: string;
@@ -11,7 +13,6 @@ interface CountriesData {
   countries: Country[];
 }
 
-
 export const Countries: React.FC = () => {
   const { data, loading, error } = useQuery<CountriesData>(GET_COUNTRIES);
 
@@ -21,8 +22,8 @@ export const Countries: React.FC = () => {
   return (
     <div>
       <table>
-      <tr><td colSpan={2}><h2>Countries List</h2></td></tr>
-      <tr><td>Country Name</td><td>Country Code</td></tr>
+      <tr><th colSpan={2}><h2>Countries List</h2></th></tr>
+      <tr><th>Country Name</th><th>Country Code</th></tr>
         {data?.countries.map((country) => (
           <tr><td>{country.name}</td><td>{country.code}</td></tr>
         ))}
