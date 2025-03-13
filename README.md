@@ -1,2 +1,0 @@
-# yoloProject
-Yolo home assignment
