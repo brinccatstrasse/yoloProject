@@ -40,34 +40,31 @@ export const Countries: React.FC = () => {
   const [countryCode, setCountryCode] = useState<string>('');
 
   const { loading: loadingAll, error: errorAll, data: allCountries } = useQuery<CountriesData>(GET_COUNTRIES);
-
+  
   const { loading: loadingFiltered, error: errorFiltered, data: filteredCountries } = useQuery<CountriesData, CountriesByCode>(GET_COUNTRIES_BY_CODE, {
     variables: { code: countryCode.toUpperCase() },
     skip: !countryCode,
   });
 
-  // Handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCountryCode(event.target.value);
   };
 
-  // Show loading states
-  if (loadingAll) return <p>Loading countries...</p>;
-  if (errorAll) return <p>Error loading countries: {errorAll.message}</p>;
-
   return (
     <table>
+      { loadingAll && <p>Loading data... </p> }
+      { errorAll && <p>Error in data: {errorAll.message}</p>}
       <tr>
         <th colSpan={2}><h1>Countries List</h1>
         </th>
       </tr>
       <tr>
-        <td>
-          <input type="text" placeholder="Enter country code (e.g., US)" value={countryCode} onChange={handleInputChange} />
+        <td colSpan={2}>
+          <input type="text" placeholder="Enter country code (e.g: MT)" value={countryCode} onChange={handleInputChange} />
         </td>
       </tr>
 
-      {(countryCode ? filteredCountries?.countries : allCountries?.countries)?.map((country) => (
+      {(countryCode.length == 2 ? filteredCountries?.countries : allCountries?.countries)?.map((country) => (
         <tr key={country.code}>
           <td>{country.name}</td>
           <td>{country.code}</td>
@@ -77,5 +74,7 @@ export const Countries: React.FC = () => {
       {countryCode && loadingFiltered && <p>Filtering...</p>}
       {countryCode && errorFiltered && <p>Error filtering: {errorFiltered.message}</p>}
     </table>
+    // <div>{ loadingAll && <p>Filtering...</p>}</div>
+    // <div>{ errorAll && <p>Filtering...</p>}</div>
   );
 };
