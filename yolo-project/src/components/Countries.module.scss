@@ -1,12 +1,12 @@
 table {
     background-color: #ececec;
     border-spacing: 0;
+    margin: auto;
     min-width: 380px;
 
     tr {
         th {
             border: 1px solid #fff;
-            font-weight: bold;
         }
 
         td {
@@ -14,8 +14,15 @@ table {
             padding: 2px;
             width: 180px;
             white-space: wrap;
-    
         }
     }
     
+}
+
+input {
+    padding: 5px;
+}
+
+.bold {
+    font-weight: 700;
 }

@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import React, { useState } from 'react';
 import { GET_COUNTRIES, GET_COUNTRIES_BY_CODE } from "./../Queries/Countries.query";
 
-import './Countries.module.scss';
+import styles from './Countries.module.scss';
 
 interface Country {
   code: string;
@@ -55,12 +55,21 @@ export const Countries: React.FC = () => {
       { loadingAll && <p>Loading data... </p> }
       { errorAll && <p>Error in data: {errorAll.message}</p>}
       <tr>
-        <th colSpan={2}><h1>Countries List</h1>
+        <th colSpan={2} className={`${styles.bold}`}><h1>List of Countries</h1>
         </th>
       </tr>
       <tr>
         <td colSpan={2}>
           <input type="text" placeholder="Enter country code (e.g: MT)" value={countryCode} onChange={handleInputChange} />
+        </td>
+      </tr>
+
+      <tr>
+        <td className={`${styles.bold}`}>
+          Country Name
+        </td>
+        <td className={`${styles.bold}`}>
+          Country Code
         </td>
       </tr>
 
