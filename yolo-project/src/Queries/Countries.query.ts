@@ -6,7 +6,15 @@ export const GET_COUNTRIES = gql`
     countries {
       code
       name
-      emoji
+    }
+  }
+`;
+
+export const GET_COUNTRIES_BY_CODE = gql`
+  query GetCountriesByCode($code: String!) {
+    countries(filter: { code: { eq: $code } }) {
+      code
+      name
     }
   }
 `;
