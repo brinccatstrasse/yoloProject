@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { useState } from 'react';
-import { GET_COUNTRIES, GET_COUNTRIES_BY_CODE } from "../../context/countryQuery";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_CODE } from "../../graphql/countryQuery";
 
 import styles from './Countries.module.scss';
 
