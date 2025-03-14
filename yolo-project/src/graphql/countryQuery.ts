@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-// Define GraphQL Query
+// GraphQL Query to obtains all the countries
 export const GET_COUNTRIES = gql`
   query countries {
     countries {
@@ -10,6 +10,7 @@ export const GET_COUNTRIES = gql`
   }
 `;
 
+// GraphQl query for filtering. Passing $code as a string, and using $code for the filter input
 export const GET_COUNTRIES_BY_CODE = gql`
   query GetCountriesByCode($code: String!) {
     countries(filter: { code: { eq: $code } }) {
