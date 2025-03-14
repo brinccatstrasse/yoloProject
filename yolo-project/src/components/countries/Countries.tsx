@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { useState } from 'react';
-import { GET_COUNTRIES, GET_COUNTRIES_BY_CODE } from "./../Queries/Countries.query";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_CODE } from "../../context/countryQuery";
 
 import styles from './Countries.module.scss';
 
@@ -83,7 +83,5 @@ export const Countries: React.FC = () => {
       {countryCode && loadingFiltered && <p>Filtering...</p>}
       {countryCode && errorFiltered && <p>Error filtering: {errorFiltered.message}</p>}
     </table>
-    // <div>{ loadingAll && <p>Filtering...</p>}</div>
-    // <div>{ errorAll && <p>Filtering...</p>}</div>
   );
 };
